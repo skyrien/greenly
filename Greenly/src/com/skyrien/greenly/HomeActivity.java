@@ -1,3 +1,5 @@
+//Writing a comment to test GIT on Windows
+
 package com.skyrien.greenly;
 
 import android.app.Activity;
