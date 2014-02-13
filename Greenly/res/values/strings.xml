@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Greenly</string>
+    <string name="action_settings">Settings</string>
+    <string name="home_search_hint">Search for store</string>
+    <string name="button_show_list">List stores</string>
+    <string name="button_show_map">Show map</string>
+    <string name="button_bookmarks">Bookmarks</string>
+    <string name="button_know_rules">Know the rules</string>
+    <string name="button_how_high">How high am I?</string><string name="button_about">About this app</string>
+    <string name="all_rights">2014 © EmeraldLabs\na studioFx LLC company. All Rights Reserved.</string>
+    <string name="about1">This is the about page! Eventually, I\'d like to include some information here regarding how and why this app came to be, and maybe a little bit about the company and it\'s vision.</string>
+    <string name="knowrules1">This is the know the rules page.</string>
+    <string name="howhigh1">This is the how high page.</string>
+    <string name="retail_list">This is the retail list view fragment.</string>
+    <string name="retail_map">This is the retail map fragment.</string>
+    <string name="retail_bookmarks">This is the retail bookmarks fragment.</string>
+    
+
+</resources>
