@@ -25,22 +25,21 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000f;
+        public static final int action_settings=0x7f08000e;
         public static final int button_about=0x7f080007;
         public static final int button_bookmarks=0x7f080004;
         public static final int button_how_high=0x7f080006;
         public static final int button_know_rules=0x7f080005;
         public static final int button_show_list=0x7f080002;
         public static final int button_show_map=0x7f080003;
-        public static final int country_name=0x7f08000e;
-        public static final int flag=0x7f08000b;
+        public static final int country_name=0x7f08000d;
+        public static final int flag=0x7f08000a;
         public static final int fragmentContainer=0x7f080009;
         public static final int home_search_box=0x7f080001;
         public static final int linearLayout1=0x7f080000;
-        public static final int place_name=0x7f08000d;
-        public static final int retail_list=0x7f08000a;
+        public static final int place_name=0x7f08000c;
         public static final int textView1=0x7f080008;
-        public static final int text_desc=0x7f08000c;
+        public static final int text_desc=0x7f08000b;
     }
     public static final class layout {
         public static final int activity_about=0x7f030000;
@@ -48,10 +47,11 @@ public final class R {
         public static final int activity_howhigh=0x7f030002;
         public static final int activity_knowrules=0x7f030003;
         public static final int activity_retail=0x7f030004;
-        public static final int fragment_bookmarks=0x7f030005;
-        public static final int fragment_list=0x7f030006;
-        public static final int fragment_map=0x7f030007;
-        public static final int list_item=0x7f030008;
+        public static final int footer_view=0x7f030005;
+        public static final int fragment_bookmarks=0x7f030006;
+        public static final int fragment_list=0x7f030007;
+        public static final int fragment_map=0x7f030008;
+        public static final int list_item=0x7f030009;
     }
     public static final class menu {
         public static final int home=0x7f070000;

@@ -8,19 +8,26 @@ public class RetailStore {
 	public static final String TAG = "RetailStore";
 	
 	// Variable properties of stores
+	//private int mId; // Internal ID, may not be necessary
 	private int mLicenseNum;
 	private String mTradename;
 	private String mStreetAddress;
+	private String mSuite;
 	private String mCity;
 	private String mState;
 	private String mCounty;
 	private String mZipCode;
+	private double mLatitude;
+	private double mLongitude;
 	private String mPhotoUrl;
 	
+
+	// This is the default constructor -- should be fixed later
 	public RetailStore() {
 		mLicenseNum = 0;
 		mTradename = "Untitled";
 		mStreetAddress = "";
+		mSuite = "";
 		mCity = "";
 		mState = "";
 		mCounty = "";
@@ -28,6 +35,7 @@ public class RetailStore {
 		mPhotoUrl = "";
 	}
 	
+	// This is a instantiator constructor
 	public RetailStore(
 			int licenseNum,
 			String tradename,
@@ -97,6 +105,29 @@ public class RetailStore {
 	public void setPhotoUrl(String photoUrl) {
 		mPhotoUrl = photoUrl;
 	}
-	
+
+	public String getmSuite() {
+		return mSuite;
+	}
+
+	public void setmSuite(String mSuite) {
+		this.mSuite = mSuite;
+	}
+
+	public double getmLatitude() {
+		return mLatitude;
+	}
+
+	public void setmLatitude(double mLatitude) {
+		this.mLatitude = mLatitude;
+	}
+
+	public double getmLongitude() {
+		return mLongitude;
+	}
+
+	public void setmLongitude(double mLongitude) {
+		this.mLongitude = mLongitude;
+	}	
 	
 }

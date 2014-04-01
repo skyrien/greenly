@@ -33,22 +33,25 @@ public class RetailActivity extends FragmentActivity {
 	public static final int MAP = 2;
 	public static final int BOOKMARKS = 3;
 	
+	// Let's declare the DB here
+	private static GreenlyDb greenlyDb;
+	
 	// The overridden onCreate method is for the activity. It will create
 	// the fragment manager, as well as set up the fragment to be loaded.
 
-	// QUESTION: Should we initialize the datastore here or in the fragments?  
-	
 	@Override
 	public void onCreate(Bundle savedStateInstance) {
 		super.onCreate(savedStateInstance);
 		setContentView(R.layout.activity_retail);
 		Log.d(TAG, "OnCreate() called");
 		
-		/* Let's begin the process of loading our data here. The RetailDb Class
-		 * represents the "Model" of the DB schema, and will be accessed via a
-		 * Loader. We are using the Loader
-		 *  		
+		/* Let's begin the process of loading our data here. The GreenlyDb class
+		 * represents the retail database. We will be creating our own async framework
+		 * for loading the DB.
 		*/
+		greenlyDb = GreenlyDb.getInstance(this);
+		
+		
 		
 		// This is the fragment manager for Greenly RetailActivity
 		FragmentManager fm = getSupportFragmentManager();
