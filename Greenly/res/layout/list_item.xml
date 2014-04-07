@@ -3,39 +3,94 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal" >
+
+   	    <ImageView
+	        android:id="@+id/list_item_storepic"
+	        android:layout_width="80dp"
+	        android:layout_height="80dp"
+	        android:layout_alignParentLeft="true"
+	    />
     
-    <ImageView
-        android:id="@+id/flag"
-        android:layout_width="160dp"
-        android:layout_height="120dp"
-       />
+  	    
+        <!-- This LinearLayout is the center column of the list item -->
+	    <LinearLayout 
+	        android:id="@+id/list_item_info"
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+	      	android:orientation="vertical"
+	      	android:layout_toRightOf="@+id/list_item_storepic"
+	        >
+	        
+	        <TextView
+	            android:id="@+id/list_item_name"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="8dp"
+	            android:layout_marginLeft="8dp"
+	            android:text="Store Title Here"
+	            android:textSize="18sp"
+	
+	            />
+	        
+	        <TextView
+	            android:id="@+id/list_item_license"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="8dp"
+	            android:textSize="14sp"
+	            android:text="Store ID"
+	            />	
+	        
+	        <TextView
+	            android:id="@+id/list_item_address"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="8dp"
+	            android:textSize="14sp"
+	            android:text="Address goes here"
+	            />		        
+	       
+	   	</LinearLayout>	        
+	      
+	    <!-- This LinearLayout is the right column of the list item -->
+		    <LinearLayout 
+	        android:id="@+id/list_item_stats"
+	        android:layout_height="wrap_content"
+	        android:layout_width="60dp"
+	        android:layout_alignParentRight="true"
+	      	android:orientation="vertical"
+	       >
+	    	    	<ImageView
+		        android:id="@+id/list_item_badge"
+		        android:layout_width="30dp"
+		        android:layout_height="30dp"
+		        android:visibility="gone"
+	  		/>
+		        <TextView
+	            android:id="@+id/list_item_stat1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="8dp"
+	            android:layout_marginLeft="8dp"
+	            android:textSize="12sp"
+	            android:text="Stat 1"
+	           />
+	       <TextView
+	           android:id="@+id/list_item_stat2"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:layout_marginTop="8dp"
+	           android:layout_marginLeft="8dp"
+	           android:textSize="12sp"
+	           android:text="Stat 2"
+	           />		    
+	
+	   	</LinearLayout>	 
+        <!-- Wow, why is this so annoying? XML is so unreadable, and it's
+        	ultimately stressful. anyway, allright, let's get at this 
+        						
+         									-alex 					-->
 
-    <LinearLayout
-        android:id="@+id/text_desc"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" 
-        android:orientation="vertical"
-        android:layout_toRightOf="@id/flag"
-        android:padding="10dp"
-        >
 
-        <TextView
-            android:id="@+id/place_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
-            android:text="Place: "
-            android:singleLine="true"
-            android:ellipsize="end"/>
-
-        <TextView
-            android:id="@+id/country_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Country: " 
-            android:singleLine="true"
-            android:ellipsize="end"/>
-
-        
-    </LinearLayout>
-
+     
 </RelativeLayout>

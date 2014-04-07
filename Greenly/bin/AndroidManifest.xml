@@ -3,6 +3,11 @@
     package="com.skyrien.greenly"
     android:versionCode="1"
     android:versionName="1.0" >
+    
+    <permission android:name="com.skyrien.greenly.RetailProvider.READ"
+        		android:description="@string/app_name"
+        		android:label="@string/app_name"
+        		android:protectionLevel="normal" />
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -40,6 +45,17 @@
         <activity
             android:name=".RetailActivity"
             android:label="@string/app_name" />
+        
+        <provider
+            android:name=".RetailProvider"
+            android:authorities="com.skyrien.greenly.RetailProvider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            android:label="RetailProvider"
+            android:readPermission="com.skyrien.greenly.RetailProvider.READ" >
+        </provider>
+        
+        
     </application>
 
 </manifest>

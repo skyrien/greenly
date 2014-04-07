@@ -12,7 +12,7 @@ public class GreenlyDb extends SQLiteAssetHelper {
 	public static final String TAG = "GreenlyDb";
 	
 	// SQLiteAssetHelper required enums
-	private static final String DATABASE_NAME = "greenlyDb";
+	private static final String DATABASE_NAME = "greenly.db";
 	private static final int DATABASE_VERSION = 1;
 	
 	// Only one static instance, accessible by getInstance()
@@ -31,18 +31,29 @@ public class GreenlyDb extends SQLiteAssetHelper {
 	// GetInstance() can call it
 	private GreenlyDb(Context context) {
 		super(context,DATABASE_NAME, null, DATABASE_VERSION);
-		Log.d(TAG,"GreenlyDb() called.");
+		Log.d(TAG,"GreenlyDb() constructor called.");
 		
 	}
 	
 	// Returns all stores -- THIS MUST RETURN A CURSOR LATER, NOT VOID
 	public Cursor getStores() {
+		Log.d(TAG,"getStores() called.");
 		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-		String[] sqlSelect = {"0 _id", "Tradename"};
-		String sqlTables = "retail";
+		String[] sqlSelect = {"_id", "Tradename", "License"};
+		String sqlTables = "stores";
 		
 		qb.setTables(sqlTables);
 		Cursor c = qb.query(sInstance.getReadableDatabase(), sqlSelect,null,null,null,null,null);
+		c.moveToFirst();
+		return c;
+	}
+	
+	public Cursor queryDb(String sqlTables, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+		Log.d(TAG,"queryDb() called.");
+		SQLiteDatabase theDatabase = sInstance.getReadableDatabase();
+		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();			
+		qb.setTables(sqlTables);
+		Cursor c = qb.query(theDatabase, projection,selection,selectionArgs,null,null,sortOrder);
 		c.moveToFirst();
 		return c;
 	}

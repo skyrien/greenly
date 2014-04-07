@@ -3,27 +3,27 @@ package com.skyrien.greenly;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class RetailListFragment extends ListFragment {
-	int mCurrentPosition = 0;
+public class RetailListFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
+
+	public static final String TAG = "ListFragment";
+	public static final int LOADER_ID = 1;
+	
+	// Static variables that I need
+	private static GreenlyDb greenlyDb;
 	private SimpleCursorAdapter mCursorAdapter;
 	private Cursor mCursor;
- 
-	public static final String TAG = "ListFragment";
-	private static GreenlyDb greenlyDb;
-	
-	// This is where we will declare some loader variables.
-	//private static final int LOADER_ID = 0;
-	
-	// This adapter binds data to listview
-	//private SimpleCursorAdapter mCursorAdapter;
+	private LoaderManager.LoaderCallbacks<Cursor> mCallbacks;
+	private int mCurrentPosition = 0;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,34 +41,35 @@ public class RetailListFragment extends ListFragment {
 			mCurrentPosition = savedInstanceState.getInt("curChoice", 0);
 		}
 		
-		// Temp List adapter
-		//setListAdapter
-		
-		// Use this to update the app title bar
-		//getActivity().setTitle(R.string.app_name);
-		
-		
 		// Load the DB for the first time here
-		// This should be async--
-		greenlyDb = GreenlyDb.getInstance(getActivity());
-		mCursor = greenlyDb.getStores();
+		// 1. Requested schema definition for the cursor, based on DB columns
+		String[] dataColumns = {RetailDbContract.RetailItem.TRADENAME,
+								RetailDbContract.RetailItem.LICENSE,
+								RetailDbContract.RetailItem.STREETADDRESS,
+								RetailDbContract.RetailItem.LATITUDE,
+								RetailDbContract.RetailItem.LONGITUDE
+				};
+		int[] viewIDs = {	R.id.list_item_name,
+							R.id.list_item_license,
+							R.id.list_item_address,
+							R.id.list_item_stat1,
+							R.id.list_item_stat2};
 		
-		// LET'S CREATE A TEST LISTVIEW ADAPTER TO PUT INTO THE LIST
+		// 2. Initializing an empty cursorAdapter. This will be populated later
+		// 		when we get the Loader to work.
+		mCursorAdapter = new SimpleCursorAdapter(getActivity().getApplicationContext(),
+												R.layout.list_item, null, dataColumns, viewIDs, 0); 		
 		
-		String[] values = new String[] {"Alpha", "Beta", "Gamma", "Delta", "Epsilon"};
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-											android.R.layout.simple_list_item_1, values);
-		
-		
-		
-		// Let's add a footer view here, just for fun
+		// Let's add a footer view here, just for fun -- IT WORKS!!!
 		LayoutInflater lf = getActivity().getLayoutInflater();
 		getListView().setFooterDividersEnabled(true);
 		TextView footerView = (TextView)lf.inflate(R.layout.footer_view, null);
 		getListView().addFooterView(footerView);
 		
-		setListAdapter(adapter);
-
+		setListAdapter(mCursorAdapter);
+		mCallbacks = this;
+		// This gets a SupportLoaderManager from the Activity and starts the Loader
+		getActivity().getSupportLoaderManager().initLoader(LOADER_ID, null, this);
 	}
 	
 	@Override
@@ -87,12 +88,26 @@ public class RetailListFragment extends ListFragment {
 		return v;
 	}
 	
-	/* THIS SECTION IS IF WE'RE USING CURSORLOADERS.
+	// THIS SECTION IS IF WE'RE USING CURSORLOADERS.
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+		Log.d(TAG,"onCreateLoader called for loader: " + id);
 		
 		// TODO
-		return new CursorLoader(getActivity().getApplicationContext());
+		switch (id) {
+		
+		// Correct loader, begin loading data from db.
+		case LOADER_ID:
+			return new CursorLoader(getActivity(),
+									RetailDbContract.STORES_URI,
+									RetailDbContract.RetailItem.PROJECTION_ALL,
+									null,
+									null,
+									null);
+		// Invalid loader
+		default:
+			return null;
+		}
 	}
 	
 	@Override
@@ -108,6 +123,5 @@ public class RetailListFragment extends ListFragment {
 	public void onLoaderReset(Loader<Cursor> loader) {
 		mCursorAdapter.swapCursor(null);
 	}
-	 */
-	
+
 }

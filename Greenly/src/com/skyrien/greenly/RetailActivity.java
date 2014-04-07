@@ -25,8 +25,6 @@ import android.util.Log;
 public class RetailActivity extends FragmentActivity {
 	public static final String TAG = "RetailActivity";
 	
-
-	
 	// these are mappings for the string intent that is passed
 	public static final String LOADFRAGMENT = "com.skyrien.greenly.loadfragment";
 	public static final int LIST = 1;
