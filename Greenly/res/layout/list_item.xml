@@ -13,10 +13,10 @@
     
   	    
         <!-- This LinearLayout is the center column of the list item -->
-	    <LinearLayout 
+	    <RelativeLayout 
 	        android:id="@+id/list_item_info"
 	        android:layout_height="wrap_content"
-	        android:layout_width="wrap_content"
+	        android:layout_width="fill_parent"
 	      	android:orientation="vertical"
 	      	android:layout_toRightOf="@+id/list_item_storepic"
 	        >
@@ -29,28 +29,57 @@
 	            android:layout_marginLeft="8dp"
 	            android:text="Store Title Here"
 	            android:textSize="18sp"
-	
 	            />
 	        
 	        <TextView
 	            android:id="@+id/list_item_license"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:layout_marginLeft="8dp"
+	            android:layout_marginTop="8dp"
+	            android:layout_toRightOf="@+id/list_item_name"
 	            android:textSize="14sp"
 	            android:text="Store ID"
-	            />	
+	            />
 	        
 	        <TextView
 	            android:id="@+id/list_item_address"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginLeft="8dp"
+	            android:layout_below="@+id/list_item_name"
 	            android:textSize="14sp"
 	            android:text="Address goes here"
 	            />		        
-	       
-	   	</LinearLayout>	        
+	        <TextView
+	            android:id="@+id/list_item_address_suite"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="8dp"
+	            android:layout_below="@+id/list_item_name"
+	            android:layout_toRightOf="@+id/list_item_address"
+	            android:textSize="14sp"
+	            android:text="Suite"
+	            />		      
+	       	<TextView
+	            android:id="@+id/list_item_address_city"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="8dp"
+	            android:textSize="14sp"
+	            android:text="City"
+	            android:layout_below="@+id/list_item_address"
+	            />	
+	        <TextView
+	            android:id="@+id/list_item_address_county"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="8dp"
+	            android:textSize="14sp"
+	            android:text="County"
+	            android:layout_below="@+id/list_item_address"
+	            android:layout_toRightOf="@+id/list_item_address_city"
+	            />	
+	   	</RelativeLayout>	        
 	      
 	    <!-- This LinearLayout is the right column of the list item -->
 		    <LinearLayout 

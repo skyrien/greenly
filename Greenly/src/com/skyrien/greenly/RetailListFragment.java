@@ -46,12 +46,18 @@ public class RetailListFragment extends ListFragment implements LoaderManager.Lo
 		String[] dataColumns = {RetailDbContract.RetailItem.TRADENAME,
 								RetailDbContract.RetailItem.LICENSE,
 								RetailDbContract.RetailItem.STREETADDRESS,
+								RetailDbContract.RetailItem.SUITE,
+								RetailDbContract.RetailItem.CITY,
+								RetailDbContract.RetailItem.COUNTY,
 								RetailDbContract.RetailItem.LATITUDE,
 								RetailDbContract.RetailItem.LONGITUDE
 				};
 		int[] viewIDs = {	R.id.list_item_name,
 							R.id.list_item_license,
 							R.id.list_item_address,
+							R.id.list_item_address_suite,
+							R.id.list_item_address_city,
+							R.id.list_item_address_county,
 							R.id.list_item_stat1,
 							R.id.list_item_stat2};
 		

@@ -41,11 +41,6 @@ public class RetailMapFragment extends Fragment {
 			mCurrentPosition = savedInstanceState.getInt("curChoice", 0);
 		}
 		
-		// This gets us the local instance to the DB
-		greenlyDb = GreenlyDb.getInstance(getActivity());
-		
-		// DO THIS ASYNC... LATER
-		mCursor = greenlyDb.getStores();
 	}
 	
 	
